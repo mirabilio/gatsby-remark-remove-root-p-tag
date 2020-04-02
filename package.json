@@ -1,6 +1,6 @@
 {
   "name": "gatsby-remark-remove-root-p-tag",
-  "version": "0.1.0",
+  "version": "1.0.0-alpha",
   "description": "Gatsby transformer-remark sub-plugin to remove the root <p></p> around markdown content.",
   "main": "index.js",
   "keywords": [
@@ -12,29 +12,37 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mirabilio/gatsby-remark-remove-root-p-tag"
+    "url": "https://github.com/mirabilio/gatsby-remark-remove-root-p-tag"
   },
   "bugs": {
     "url": "https://github.com/mirabilio/gatsby-remark-remove-root-p-tag"
   },
   "dependencies": {
-    "gatsby-source-s3-image": "^1.6.183",
     "unist-util-select": "^3.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/git": "^9.0.0",
     "cross-env": "^7.0.2",
+    "cz-conventional-changelog": "3.1.0",
     "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0",
     "remark-cli": "^7.0.1",
-    "remark-preset-lint-recommended": "^3.0.4"
+    "remark-preset-lint-recommended": "^3.0.4",
+    "semantic-release": "^17.0.4"
   },
   "scripts": {
     "build": "babel ./ --out-dir ./",
     "prepack": "cross-env NODE_ENV=production yarn build",
     "watch": "babel -w src --out-dir .",
-    "release": "standard-version"
+    "semantic-release": "semantic-release"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

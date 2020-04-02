@@ -35,10 +35,11 @@
     "semantic-release": "^17.0.4"
   },
   "scripts": {
-    "build": "babel ./ --out-dir ./",
+    "build": "babel src --out-dir ./",
     "prepack": "cross-env NODE_ENV=production yarn build",
     "watch": "babel -w src --out-dir .",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "release": "yarn build && semantic-release"
   },
   "config": {
     "commitizen": {

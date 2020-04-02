@@ -6,7 +6,7 @@
 >
 > Create an issue for question, bug, idea, etc. PRs welcome 👍.
 
-Removes the `<p>` tag from the markdown AST that `gatsby-transformer-remark`, in some cases, automatically wraps around provided markup. `<p>` tags that are present in the input markdown content are preserved.
+Removes the `<p>` tag from the markdown AST that `gatsby-transformer-remark`, in some cases, automatically wraps around the markup it is given to process to HTML. `<p>` tags that are present in the input markdown content are preserved.
 
 
 

@@ -1,9 +1,3 @@
-<p align="center">
-  <a href="https://gatsbyjs.org">
-    <img src="./assets/logo.svg" width="100" />
-  </a>
-</p>
-
 <h1 align="center">
   gatsby-remark-remove-root-p-tag
 </h1>

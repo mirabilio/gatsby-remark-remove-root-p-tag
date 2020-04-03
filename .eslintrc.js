@@ -1,19 +1,23 @@
 module.exports = {
   'env': {
-    'commonjs': true,
     'es6': true,
     'node': true,
   },
-  'extends': [
-    'google',
+  'plugins': [
+    'prettier',
   ],
-  'globals': {
-    'Atomics': 'readonly',
-    'SharedArrayBuffer': 'readonly',
-  },
-  'parserOptions': {
-    'ecmaVersion': 2018,
-  },
+  'extends': [
+    'eslint:recommended', 
+    'plugin:prettier/recommended',
+  ],
   'rules': {
+    'prettier/prettier': 'error',
   },
+  // 'globals': {
+  //   'Atomics': 'readonly',
+  //   'SharedArrayBuffer': 'readonly',
+  // },
+  'parserOptions': {
+    'ecmaVersion': 2017,
+  }
 };

@@ -1,6 +1,6 @@
 {
   "name": "gatsby-remark-remove-root-p-tag",
-  "version": "1.0.0-alpha",
+  "version": "0.0.0-development",
   "description": "Gatsby transformer-remark sub-plugin to remove the root <p></p> around markdown content.",
   "main": "index.js",
   "keywords": [
@@ -30,6 +30,9 @@
     "cz-conventional-changelog": "3.1.0",
     "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "prettier": "^2.0.2",
     "remark-cli": "^7.0.1",
     "remark-preset-lint-recommended": "^3.0.4",
     "semantic-release": "^17.0.4"
@@ -39,7 +42,8 @@
     "prepack": "cross-env NODE_ENV=production yarn build",
     "watch": "babel -w src --out-dir .",
     "semantic-release": "semantic-release",
-    "release": "yarn build && semantic-release"
+    "release": "yarn prepack && semantic-release",
+    "release-dry-run": "yarn prepack && semantic-release --dry-run"
   },
   "config": {
     "commitizen": {

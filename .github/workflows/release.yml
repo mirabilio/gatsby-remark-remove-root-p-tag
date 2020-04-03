@@ -1,9 +1,5 @@
 name: Release
 on: push
-# on:
-#   push:
-#     branches:
-#       - add-ci
 jobs:
   release:
     name: Release

@@ -9,8 +9,6 @@
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
-> This plugin is in **beta**.
->
 > Create an issue for question, bug, idea, etc. PRs welcome 👍.
 >
 > If this plugin doesn't fulfill your use case, please create an issue to request the feature.

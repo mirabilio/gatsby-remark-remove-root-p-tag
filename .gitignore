@@ -1,6 +1,6 @@
 # build
 index.js
-__tests__/*
+__tests__/
 
 # Visual Studio
 *.code-workspace

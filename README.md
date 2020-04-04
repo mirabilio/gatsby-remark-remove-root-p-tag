@@ -17,7 +17,7 @@ Removes the wrapping HTML `<p>` tag that `gatsby-transformer-remark` automatical
 
 ## 🚀 Install
 
-1. Add the package to your site:
+### Install
 
 ```shell
 npm i gatsby-remark-remove-root-p-tag
@@ -27,7 +27,9 @@ npm i gatsby-remark-remove-root-p-tag
 yarn add gatsby-remark-remove-root-p-tag
 ```
 
-2. Add plugin to the `gatsby-transformer-remark` plugins array in your `gatsby-config.js`:
+### Configure 
+
+Add plugin to the `gatsby-transformer-remark` plugins array in your `gatsby-config.js`:
 
 ```
 ...
@@ -45,7 +47,7 @@ yarn add gatsby-remark-remove-root-p-tag
 
 ## Usage Example
 
-### `gatsby-config.js`
+### gatsby-config.js
 ```javascript
 module.exports = {
   plugins: [
@@ -66,7 +68,7 @@ module.exports = {
 };
 ```
 
-### `gatsby-node.js`
+### gatsby-node.js
 
 ```javascript
 const markdownContentNode = {

@@ -12,8 +12,10 @@
 > This plugin is in **beta**.
 >
 > Create an issue for question, bug, idea, etc. PRs welcome 👍.
+>
+> If this plugin doesn't fulfill your use case, please create an issue to request the feature.
 
-Removes the `<p>` tag from the markdown AST that `gatsby-transformer-remark`, in some cases, automatically wraps around the markup it is given to process to HTML. `<p>` tags that are present in the input markdown content are preserved.
+Removes the wrapping HTML `<p>` tag that `gatsby-transformer-remark` automatically adds during its markdown transformation process. The root `<p>` tag or root line break `\n` is preserved if it exists in the user-provided markdown.
 
 ## 🚀 Install
 
@@ -21,7 +23,9 @@ Removes the `<p>` tag from the markdown AST that `gatsby-transformer-remark`, in
 
 ```shell
 npm i gatsby-remark-remove-root-p-tag
+```
 
+```shell
 yarn add gatsby-remark-remove-root-p-tag
 ```
 
@@ -35,15 +39,111 @@ yarn add gatsby-remark-remove-root-p-tag
           {
             resolve: `gatsby-remark-remove-root-p-tag`,
             options: {
-              parents: [`gatsby-plugin-json-remark`] // Optional: will process only the MarkdownRemark nodes created by these plugins
+              parents: ["gatsby-plugin-json-remark", "default-site-plugin"] // Optional: will process only the MarkdownRemark nodes created by these plugins
             }
           },
 ...
 ```
 
-## Usage
+## Usage Example
 
-After the above configuration is completed, processing is automatic.
+### `gatsby-config.js`
+```javascript
+module.exports = {
+  plugins: [
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-remove-root-p-tag`,
+            options: {
+              parents: ["default-site-plugin"],
+            },
+          },
+        ],
+      },
+    },
+  ],
+};
+```
+
+### `gatsby-node.js`
+
+```javascript
+const markdownContentNode = {
+  id: createNodeId("this is a unique string >>> MyMarkdown"),
+  internal: {
+    content: "*some italic text*",
+    type: `MyMarkdown`,
+    mediaType: "text/markdown",
+  },
+};
+markdownContentNode.internal.contentDigest = createContentDigest(
+  JSON.stringify(markdownContentNode)
+);
+const markdownRemark = await createNode(markdownContentNode);
+```
+### GraphQL Schema / Query
+
+The above setup will create a markdown node with the `<p>` tag removed: 
+
+```graphql
+query MyQuery {
+  allMyMarkdown {
+    edges {
+      node {
+        childMarkdownRemark {
+          html
+          rawMarkdownBody
+        }
+      }
+    }
+  }
+}
+```
+
+Query results:
+
+```graphql
+{
+  "data": {
+    "allMyMarkdown": {
+      "edges": [
+        {
+          "node": {
+            "childMarkdownRemark": {
+              "html": "<em>some italic text</em>",
+              "rawMarkdownBody": "*some italic text*"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+Without `gatsby-remark-remove-root-p-tag`, a `<p>` tag wraps the transformed HTML:
+
+```graphql
+{
+  "data": {
+    "allMyMarkdown": {
+      "edges": [
+        {
+          "node": {
+            "childMarkdownRemark": {
+              "html": "<p><em>some italic text</em></p>",
+              "rawMarkdownBody": "*some italic text*"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+```
 
 ## Requirements
 

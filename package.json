@@ -1,7 +1,7 @@
 {
   "name": "gatsby-remark-remove-root-p-tag",
   "version": "0.0.0-development",
-  "description": "Gatsby transformer-remark sub-plugin to remove the root <p></p> around markdown content.",
+  "description": "Removes the wrapping HTML `<p>` tag that `gatsby-transformer-remark` automatically adds during its markdown transformation process. The root `<p>` tag or root line break `\n` is preserved if it exists in the user-provided markdown.",
   "main": "index.js",
   "keywords": [
     "gatsby",
